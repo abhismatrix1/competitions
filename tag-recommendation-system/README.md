@@ -30,4 +30,4 @@ HE-d3ab268,forms|select|dojo
 HE-ed2fa45,php|mysql|login|locking|ip-address
 ```
 
-Leaderboard\ score = \frac{1}{n} \cdot \sum_{i=1}^{n}{(F1\ score)_i}
+Leaderboard score = (1/n)*sum(Fi_score) (i.e mean F1 score of all articles)
