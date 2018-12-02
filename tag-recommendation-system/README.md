@@ -14,9 +14,6 @@ The dataset consists of ‘train.csv ’, ‘test.csv’ and ‘sample_submissio
 Variable | Description 
 --- | --- 
 id | Unique id for each article
---- | --- 
 title | Title of the article
---- | --- 
 article | Description of the article (raw format)
---- | --- 
 tags | Tags associated with the respective article. If multiple tags are associated with an article then they are seperated by '|'.
