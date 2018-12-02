@@ -1,0 +1,2 @@
+1. from given torrent file
+2. https://www.kaggle.com/yekenot/fasttext-crawl-300d-2m
