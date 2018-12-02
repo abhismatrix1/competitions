@@ -1,6 +1,6 @@
 ### This repo contains source file of all the competitions I competed.
 List of competition:
-- 1. Hackerearth - Deep learning - tagging (3 Dec-2018)
+- Hackerearth - article tagging(Deep learning) (3 Dec-2018)
 
 
 ### Getting started
