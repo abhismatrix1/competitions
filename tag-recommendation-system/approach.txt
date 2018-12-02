@@ -1,0 +1,17 @@
+1. I have used simple cleaning mechanism to clean text data
+2. have used fastai word to vec embeddings
+3. have converted problem into 1d convolution so to be solved using CNN models
+4. After building model for feature extraction, have again built decision model (dense) which gives threshold for each article and each tag. (yahoo paper)
+5.  I have not done any feature engineering. This haqqs been learned by first model.
+
+Tools used
+1. fastai word2vec
+2. keras
+3. tensorflow
+4. kaggle kernels for training
+5. miscleaneous. 
+
+Source file.
+1. attaching ipynb (jupyter notebook ) used for builing and training. 
+2. Data input path need to be changed accordingly. everything else is set.
+3. external data not used. fastai word2vec used which need to be given (can be downloaded from here https://www.kaggle.com/yekenot/fasttext-crawl-300d-2m)
