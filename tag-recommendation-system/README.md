@@ -21,11 +21,13 @@ tags | Tags associated with the respective article. If multiple tags are associa
 #### Submission
 The submission file submitted by the candidate for evaluation has to be in the given format. The submission file is in .csv format. Check sample_submission for details. Remember, incase of multiple tags for a given article, they are seperated by '|'. 
 
+```
 id,tags
 HE-efbc27d,java|freemarker
 HE-d1fd267,phpunit|pear|osx-mountain-lion
 HE-ffd4152,javascript|jquery|ajax|onclick
 HE-d3ab268,forms|select|dojo
 HE-ed2fa45,php|mysql|login|locking|ip-address
+```
 
 Leaderboard\ score = \frac{1}{n} \cdot \sum_{i=1}^{n}{(F1\ score)_i}
