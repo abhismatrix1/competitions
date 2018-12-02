@@ -10,22 +10,13 @@ You are provided with approximately 1 million technology-related articles mapped
 
 The dataset consists of ‘train.csv ’, ‘test.csv’ and ‘sample_submission.csv’. Description of the columns in the dataset is given below:
 
-Variable Description
 
-id Unique id for each article
-
-title
-
-Title of the article
-
-article
-
-Description of the article (raw format)
-
-tags
-
-Tags associated with the respective article. If multiple tags are associated with an article then they are seperated by '|'.  
-
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+Variable | Description 
+--- | --- 
+id | Unique id for each article
+--- | --- 
+title | Title of the article
+--- | --- 
+article | Description of the article (raw format)
+--- | --- 
+tags | Tags associated with the respective article. If multiple tags are associated with an article then they are seperated by '|'.
