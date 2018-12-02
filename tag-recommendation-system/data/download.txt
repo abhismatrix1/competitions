@@ -1,2 +1,3 @@
-1. from given torrent file
+Download these two data set and unzip.
+1. data 1 from given torrent file
 2. https://www.kaggle.com/yekenot/fasttext-crawl-300d-2m
