@@ -152,7 +152,7 @@ def model_decision(model1):
 	for layer in range(len(model2.layers)):
 	    model2.layers[layer].trainable=False
 	for layer in list_layers:
-    	model2.layers[layer].trainable=True
+		model2.layers[layer].trainable=True
 	return model2
 
 

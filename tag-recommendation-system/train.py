@@ -72,7 +72,7 @@ def train(embedding_matrix, x_train, y_train,x_test, mlb):
 	return
 
 
-def create_generator(batch_size)
+def create_generator(batch_size):
 	Xtrain, Xval, ytrain, yval = train_test_split(x_train, y_train, train_size=0.98, random_state=233)
 	xtrain_gen=dgen(x_train,y_train,batch_size)
 	eval_gen=dgen(Xval,yval,batch_size)
@@ -101,7 +101,7 @@ class dgen(Sequence):
 
         y_batch = self.y[idx * self.batch_size:(idx + 1) * self.batch_size].todense()
         return np.vstack(X_batch),np.vstack(y_batch)
-        
+
 def generate_submission_file(x_test):
 	
 
@@ -142,6 +142,6 @@ def generate_submission_file(x_test):
 
 if __name__ == "__main__":
 	embedding_matrix, x_train, y_train,x_test, mlb=preprocess_data()
-    train(embedding_matrix, x_train, y_train,x_test, mlb)
-    print("training completed")
+	train(embedding_matrix, x_train, y_train,x_test, mlb)
+	print("training completed")
 
