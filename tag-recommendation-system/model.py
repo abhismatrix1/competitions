@@ -14,6 +14,9 @@ from keras import backend as K
 #model
 #wrote out all the blocks instead of looping for simplicity
 def model_feature(embedding_matrix):
+	max_features = 100000
+	maxlen = 200
+	embed_size = 300
 	filter_nr = 64
 	filter_size = 3
 	max_pool_size = 3

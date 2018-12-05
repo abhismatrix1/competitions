@@ -24,7 +24,7 @@ from keras.utils import Sequence
 from model import model_feature,model_decision
 from preprocess import preprocess_data
 from keras.models import load_model
-
+from util import fbeta_score,precision,recall
 
 BATCH_SIZE = 512
 
@@ -38,7 +38,7 @@ def train(embedding_matrix, x_train, y_train,x_test, mlb):
 	            optimizer=optimizers.Adam(lr=.001),
 	            metrics=[fbeta_score])
 	            
-	epochs = 30
+	epochs = 1
 	model.fit_generator(xtrain_gen,
 	                        steps_per_epoch=steps_per_epoch, epochs=epochs,
 	                       validation_data=eval_gen,
@@ -54,7 +54,7 @@ def train(embedding_matrix, x_train, y_train,x_test, mlb):
 	            metrics=[fbeta_score,precision,recall])
 	            
 
-	epochs = 30
+	epochs = 1
 	checkpoint2=callbacks.ModelCheckpoint('model_decision',save_best_only=True)
 	model2.fit_generator(xtrain_gen,
 	                        steps_per_epoch=ytrain.shape[0] // batch_size, epochs=epochs,

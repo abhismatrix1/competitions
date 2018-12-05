@@ -1,5 +1,5 @@
 import os
-print(os.listdir("../input/he-toxic-multilabel"))
+#print(os.listdir("../input/he-toxic-multilabel"))
 
 # Any results you write to the current directory are saved as output.
 import os
@@ -17,9 +17,9 @@ from sklearn.cross_validation import KFold
 from keras.preprocessing import text, sequence
 from sklearn.preprocessing import MultiLabelBinarizer
 
-TRAIN_FILE='../data/d583b256-d-new_dataset/new_dataset/train.csv'
-TEST_FILE='../data/d583b256-d-new_dataset/new_dataset/test.csv'
-EMBEDDING_FILE = '../data/fasttext-crawl-300d-2m/crawl-300d-2M.vec'
+TRAIN_FILE='data/Dataset-DL4/train.csv'
+TEST_FILE='data/Dataset-DL4/test.csv'
+EMBEDDING_FILE = 'data/Dataset-DL4/crawl-300d-2M.vec'
 
 
 def preprocess_data(max_features = 100000,maxlen = 200,embed_size = 300):
@@ -37,7 +37,7 @@ def preprocess_data(max_features = 100000,maxlen = 200,embed_size = 300):
 	y=mlb.fit_transform(lst)
 
 	del lst
-	test=pd.read_csv()
+	test=pd.read_csv(TEST_FILE)
 
 	test=test.drop(['id'],axis=1)
 	test['article']=test['article'].str.replace('</p>|<p>|\r|\n|<br>|</p>|<pre>|</pre>|<code>|</code>','')

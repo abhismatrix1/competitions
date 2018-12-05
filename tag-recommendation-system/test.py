@@ -11,40 +11,42 @@ from keras import initializers, regularizers, constraints, callbacks
 from keras import backend as K
 import pandas as pd
 import numpy as np
-
 from keras.models import load_model
+from preprocess import preprocess_data
 
-model2=load_model('model_decision')
-test=pd.read_csv('../input/he-toxic-multilabel/d583b256-d-new_dataset/new_dataset/test.csv')['id']
+model2=load_model('model/model_decision')
+#model1=load_model('model/model_feature')
+test=pd.read_csv('data/Dataset-DL4/test.csv')['id']
 threshold=[.22]
 loop=int(194323/batch_size)
 remained=194323%batch_size
 i=0
+pre=[]
+_, _, _,x_test, mlb=preprocess_data()
 
-for thre in threshold:
-    pre=[]
-    while True:
-        start=i*batch_size
-        end=(i+1)*batch_size
-        if i==loop:
-            end=i*batch_size+remained
-            batch_size=remained
-            print(start,end)
-        pred=model2.predict(x_test[start:end])
-        ddx=np.argmax(pred,axis=1)
-        pred[np.arange(batch_size),ddx]=1
-        pred[pred>=thre]=1
-        pred[pred<thre]=0
-        tagss=mlb.inverse_transform(pred)
-        for tg,idx in zip(tagss,test.values[start:end]):
-            strn=''
-            for wo in tg:
-                strn=strn+wo+'|'
-            pre.append({'id':idx,'tags':strn[:-1]})
-        i+=1
+while True:
+    start=i*batch_size
+    end=(i+1)*batch_size
+    if i==loop:
+        end=i*batch_size+remained
+        batch_size=remained
 
-        if i>loop:
-            break
+    pred=model2.predict(x_test[start:end])
+    ddx=np.argmax(pred,axis=1)
+    pred[np.arange(batch_size),ddx]=1
+    pred[pred>=thre]=1
+    pred[pred<thre]=0
+    tagss=mlb.inverse_transform(pred)
+    for tg,idx in zip(tagss,test.values[start:end]):
+        strn=''
+        for wo in tg:
+            strn=strn+wo+'|'
+        pre.append({'id':idx,'tags':strn[:-1]})
+    i+=1
+
+    if i>loop:
+        break
 
 
 pd.DataFrame(pre).to_csv("submission.csv",index=False)
+
