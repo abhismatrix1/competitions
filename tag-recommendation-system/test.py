@@ -45,7 +45,7 @@ with open('multi_label_binarizer.pickle', 'rb') as handle:
 	mlb = pickle.load(handle)
 print("data loaded.Now starting evaluation...")
 test=pd.read_csv('data/Dataset-DL4/test.csv')['id']
-threshold=.22
+threshold=.4
 loop=int(194323/batch_size)
 remained=194323%batch_size
 i=0
@@ -61,7 +61,7 @@ while True:
 
     pred=model2.predict(x_test[start:end])
     pred2=model3.predict(x_test[start:end])
-    highp_index=np.where(pred2>=.5)
+    highp_index=np.where(pred2>=.28)
     ddx=np.argmax(pred,axis=1)
     pred[np.arange(batch_size),ddx]=1
     pred[highp_index]=1

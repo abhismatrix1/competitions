@@ -3,3 +3,4 @@ data
 *.pyc
 model
 tokenizer.pickle
+__pycache__/preprocess.cpython-36.pyc
