@@ -129,7 +129,7 @@ def model_feature(embedding_matrix):
 	output = Dense(36321, activation='sigmoid',kernel_initializer=keras.initializers.RandomUniform(minval=-3e-4, maxval=3e-4, seed=None))(output)
 	model = Model(comment, output)
 
-	return Model
+	return model
 
 def model_decision(model1):
 	output_1=Model(inputs=[model.get_input_at(0)],

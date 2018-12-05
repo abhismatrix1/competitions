@@ -1,3 +1,5 @@
 tag.zip
 data
 *.pyc
+model
+tokenizer.pickle

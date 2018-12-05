@@ -16,6 +16,8 @@ from sklearn.metrics import roc_auc_score,f1_score
 from sklearn.cross_validation import KFold
 from keras.preprocessing import text, sequence
 from sklearn.preprocessing import MultiLabelBinarizer
+import pickle
+
 
 TRAIN_FILE='data/Dataset-DL4/train.csv'
 TEST_FILE='data/Dataset-DL4/test.csv'
@@ -35,7 +37,10 @@ def preprocess_data(max_features = 100000,maxlen = 200,embed_size = 300):
 	#one hot encode label (multi)
 	mlb = MultiLabelBinarizer(sparse_output=True)
 	y=mlb.fit_transform(lst)
+	with open('multi_label_binarizer.pickle', 'wb') as handle:
+		pickle.dump(mlb, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
+	print("binarizer saved")
 	del lst
 	test=pd.read_csv(TEST_FILE)
 
@@ -51,6 +56,9 @@ def preprocess_data(max_features = 100000,maxlen = 200,embed_size = 300):
 	X_test = test["combined"].fillna("fillna").values
 	tokenizer = text.Tokenizer(num_words=max_features)
 	tokenizer.fit_on_texts(list(X_train) + list(X_test))
+	with open('tokenizer.pickle', 'wb') as handle:
+		pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+	print("tokenizer saved")
 	X_train = tokenizer.texts_to_sequences(X_train)
 	X_test = tokenizer.texts_to_sequences(X_test)
 	x_train = sequence.pad_sequences(X_train, maxlen=maxlen)
@@ -79,3 +87,6 @@ def preprocess_data(max_features = 100000,maxlen = 200,embed_size = 300):
 	return embedding_matrix, x_train, y_train,x_test, mlb
 
 def get_coefs(word, *arr): return word, np.asarray(arr, dtype='float32')
+
+if __name__ == "__main__":
+	preprocess_data()

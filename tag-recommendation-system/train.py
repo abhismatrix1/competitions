@@ -24,7 +24,7 @@ from keras.utils import Sequence
 from model import model_feature,model_decision
 from preprocess import preprocess_data
 from keras.models import load_model
-from util import fbeta_score,precision,recall
+from util import precision, recall, fbeta_score
 
 BATCH_SIZE = 512
 
