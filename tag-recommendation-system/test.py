@@ -15,15 +15,15 @@ from keras.models import load_model, model_from_json
 from preprocess import preprocess_data
 from model import model_feature,model_decision
 from model import difference
-from util import precision, recall, fbeta_score,focal_loss
+from util import precision, recall, fbeta_score,focal_loss,custom_loss
 import gc
 import pickle
 from tqdm import tqdm
 
 maxlen=200
 batch_size=1024
-model3=load_model('model/model_D_1',custom_objects={'tf':tf,'fbeta_score':fbeta_score,'precision':precision,'recall':recall,'focal_loss_fixed':focal_loss()})
-model2=load_model('model/model_decision',custom_objects={'tf':tf,'fbeta_score':fbeta_score,'precision':precision,'recall':recall,'focal_loss_fixed':focal_loss()})
+model2=load_model('model/model_decision_f2',custom_objects={'tf':tf,'fbeta_score':fbeta_score,'precision':precision,'recall':recall,'custom_loss':custom_loss})
+#model2=load_model('model/model_decision',custom_objects={'tf':tf,'fbeta_score':fbeta_score,'precision':precision,'recall':recall,'focal_loss_fixed':focal_loss()})
 print('model loaded. Now loading data...')
 with open('tokenizer.pickle', 'rb') as handle:
 	tokenizer = pickle.load(handle)
@@ -45,7 +45,8 @@ with open('multi_label_binarizer.pickle', 'rb') as handle:
 	mlb = pickle.load(handle)
 print("data loaded.Now starting evaluation...")
 test=pd.read_csv('data/Dataset-DL4/test.csv')['id']
-threshold=.4
+threshold=.65
+BB=.25
 loop=int(194323/batch_size)
 remained=194323%batch_size
 i=0
@@ -60,11 +61,11 @@ while True:
         batch_size=remained
 
     pred=model2.predict(x_test[start:end])
-    pred2=model3.predict(x_test[start:end])
-    highp_index=np.where(pred2>=.28)
+    #pred2=model3.predict(x_test[start:end])
+    #highp_index=np.where(pred2>=.4)
     ddx=np.argmax(pred,axis=1)
     pred[np.arange(batch_size),ddx]=1
-    pred[highp_index]=1
+    #pred[highp_index]=1
 
     pred[pred>=threshold]=1
     pred[pred<threshold]=0
