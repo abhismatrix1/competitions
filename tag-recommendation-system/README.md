@@ -6,6 +6,15 @@ HackerEarth wants to improve its customer experience by suggesting tags for any 
 
 You are provided with approximately 1 million technology-related articles mapped to relevant tags. You need to build a model that can generate relevant tags from the given set of articles.
 
+### Download data
+Download these two data set, unzip and place that in the folder in data:
+
+```
+
+1. Tag data - from given torrent file (in the data folder)
+2. Fastai word2vec embeddings - https://www.kaggle.com/yekenot/fasttext-crawl-300d-2m
+```
+
 #### Data Description
 
 The dataset consists of ‘train.csv ’, ‘test.csv’ and ‘sample_submission.csv’. Description of the columns in the dataset is given below:
