@@ -2,5 +2,7 @@ tag.zip
 data
 *.pyc
 model
+tag_system.zip
+other model
 tokenizer.pickle
 __pycache__/preprocess.cpython-36.pyc
