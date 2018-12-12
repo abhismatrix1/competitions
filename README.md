@@ -2,7 +2,8 @@
 ### This repo contains source file of all the competitions I competed.
 
 ### List of competition:
-- [Hackerearth - Tag recommendation system](link1) (Deep learning) (2 Dec-2018) (final position 13/73)
+<a href="https://www.hackerearth.com/challenge/competitive/deep-learning-challenge-4/leaderboard/">- Hackerearth - Tag recommendation system</a> (Deep learning) (2 Dec-2018) (final position 13/73)
+
 
 
 ### Getting started
